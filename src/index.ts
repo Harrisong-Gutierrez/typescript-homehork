@@ -1,9 +1,15 @@
+// *************************************************************************************************************
+// **** El calculo debe estar dentro de una funcion.//done
 // Números y operaciones matemáticas: Crea una función que tome dos números como parámetros y devuelva su suma.
 
 let firstnum: number = 2;
 let secondnum: number = 3;
-let sum: number = firstnum + secondnum;
-console.log("the result of the sum", sum);
+const sumTwoNum = (a: number, b: number) => {
+    return a + b
+}
+
+
+console.log(sumTwoNum(firstnum, secondnum));
 
 // Cadenas y concatenación: Escribe una función que tome dos cadenas y las concatene en una sola cadena.
 
@@ -59,12 +65,14 @@ console.log("the distance from origin is ", distance)
 
 
 
+// *************************************************************************************************************
+// ****** La linea "const result: string = parameter.toString();" no es necesario, el typeof debe ser aplicado a parameter y la funcion debe retornar un string.
 // Escribe una función que tome un parámetro de tipo any y devuelva su tipo como cadena.
 
 
-const changetoString = (parameter: any) => {
-    const result: string = parameter.toString();
-    return typeof result
+
+const changetoString = (parameter: any): string => {
+    return typeof parameter;
 }
 
 
