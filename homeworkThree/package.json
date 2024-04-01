@@ -10,5 +10,8 @@
   "scripts": {
     "build": "yarn tsc",
     "dev": "node dist/sesionthree.js"
+  },
+  "dependencies": {
+    "yarn": "^1.22.22"
   }
 }
