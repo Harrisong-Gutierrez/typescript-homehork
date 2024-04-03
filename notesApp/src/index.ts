@@ -17,7 +17,8 @@ let arrData: any[] = [];
 
         const updatedNote = await notesApp.updateNote(newNote.userId, { description: "New description" });
         // console.log("Updated note:", updatedNote);
-        arrData.push(newNote)
+        arrData.push(updatedNote)
+        // console.log(updatedNote)
 
         const retrievedNote = await notesApp.getNoteById(updatedNote.userId);
         // console.log("Recovered note:", retrievedNote);
