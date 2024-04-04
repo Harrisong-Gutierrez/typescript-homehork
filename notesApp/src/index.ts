@@ -1,40 +1,48 @@
 import { User } from './models/User';
 import { NotesApp } from './services/ NotesApp';
 
-let arrData: any[] = [];
+
+
+async function createNewNote(notesApp: NotesApp, user: User) {
+    return await notesApp.createNote("friday", "This is a new note", user.email, new Date());
+}
+
+async function updateNoteDescription(notesApp: NotesApp, userId: string, newDescription: string) {
+    return await notesApp.updateNote(userId, { description: newDescription });
+}
+
+async function getNoteById(notesApp: NotesApp, userId: string) {
+    return await notesApp.getNoteById(userId);
+}
+
+async function deleteNoteById(notesApp: NotesApp, userId: string) {
+    return await notesApp.deleteNote(userId);
+}
+
+
 
 (async () => {
-    const user = new User("Harrisong", "Gutierrez", "Harrisong@gmail.com");
-    console.log("This is my user", user)
-    const notesApp = new NotesApp();
-
     try {
-        const newNote = await notesApp.createNote("Venus", "En la tranquila noche, mis nostalgias amargas sufría. En busca de quietud bajé al fresco y callado jardín. En el obscuro cielo Venus bella temblando lucía, como incrustado en ébano un dorado y divino jazmín. A mi alma enamorada, una reina oriental parecía,que esperaba a su amante bajo el techo de su camarín", user.email, new Date());
+        const user = new User("Harrisong", "Gutierrez", "Harrisong@gmail.com");
+
+        const notesApp = new NotesApp();
+
+        const newNote = await createNewNote(notesApp, user);
         console.log("Note created:", newNote);
-        arrData.push(newNote)
 
-
-
-        const updatedNote = await notesApp.updateNote(newNote.userId, { description: "New description" });
+        const updatedNote = await updateNoteDescription(notesApp, newNote.userId, "New description");
         console.log("Updated note:", updatedNote);
-        arrData.push(updatedNote)
 
+        const retrievedNote = await getNoteById(notesApp, updatedNote.userId);
+        console.log("Retrieved note:", retrievedNote);
 
-
-        const retrievedNote = await notesApp.getNoteById(updatedNote.userId);
-        console.log("Recovered note:", retrievedNote);
-
-
-
-
-        const deleted = await notesApp.deleteNote(retrievedNote.userId);
+        const deleted = await deleteNoteById(notesApp, retrievedNote.userId);
         console.log("Deleted note:", deleted);
-   
-
-        console.log("All notes", arrData);
-
 
     } catch (error: any) {
+
         console.error("Error:", error.message);
+
     }
 })();
+
