@@ -23,25 +23,24 @@ import { Utilities } from "./utils/utilities";
 
 
 
-
-
 interface Item {
-    id: number | string
+    id: number | string;
 }
 
-class DataStore<T extends Item> {
+class DataStore<T> {
     private items: T[] = [];
 
-
     addItem(item: T): void {
-        this.items.push(item);
+        if (item !== null && typeof item === 'object' && 'id' in item) {
+            this.items.push(item);
+        } else {
+            console.error("El elemento no tiene la propiedad 'id'.");
+        }
     }
-
 
     getItem(index: number): T | undefined {
         return this.items[index];
     }
-
 
     removeItem(index: number): void {
         this.items.splice(index, 1);
@@ -49,17 +48,29 @@ class DataStore<T extends Item> {
 }
 
 
-const numberStore = new DataStore<any>();
-const stringStore = new DataStore<any>();
-stringStore.addItem("Hello");
+const dataStore = new DataStore<Item>();
+
+
+dataStore.addItem({ id: 1 });
+dataStore.addItem({ id: "abc" });
+
+const numberStore = new DataStore<number>();
+
+numberStore.addItem(1);
+console.log(numberStore.getItem(0));
+
+const stringStore = new DataStore<string>();
+
+stringStore.addItem("Harrisong");
 console.log(stringStore.getItem(0));
-stringStore.removeItem(0);
 
 const objectStore = new DataStore<{ id: string | number, name: string }>();
+
 objectStore.addItem({ id: 1, name: "Object 1" });
 objectStore.addItem({ id: 10, name: "Object 2" });
 console.log(objectStore.getItem(0));
-objectStore.removeItem(0)
+objectStore.removeItem(0);
+
 
 
 
