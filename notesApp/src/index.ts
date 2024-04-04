@@ -31,14 +31,7 @@ let arrData: any[] = [];
         console.log("Deleted note:", deleted);
    
 
-
-
-
-
         console.log("All notes", arrData);
-
-
-
 
 
     } catch (error: any) {
