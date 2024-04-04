@@ -1,3 +1,4 @@
+import { Note } from './models/Note';
 import { User } from './models/User';
 import { NotesApp } from './services/ NotesApp';
 
@@ -20,12 +21,28 @@ let arrData: any[] = [];
         arrData.push(updatedNote)
         // console.log(updatedNote)
 
+
+
         const retrievedNote = await notesApp.getNoteById(updatedNote.userId);
         // console.log("Recovered note:", retrievedNote);
 
+
+
+
         const deleted = await notesApp.deleteNote(retrievedNote.userId);
         // console.log("Deleted note:", deleted);
-        console.log("All notes", arrData)
+        // console.log("All notes", arrData)
+
+
+
+
+
+        console.log("All notes", arrData);
+
+
+
+        
+
     } catch (error: any) {
         console.error("Error:", error.message);
     }

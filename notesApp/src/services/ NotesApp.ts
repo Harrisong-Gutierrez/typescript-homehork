@@ -16,7 +16,7 @@ function LogAction(target: any, propertyKey: string, descriptor: PropertyDescrip
     return descriptor;
 }
 
-class NotesApp {
+export class NotesApp {
     notes: Note[];
 
     constructor() {
@@ -27,7 +27,7 @@ class NotesApp {
     async createNote(title: string, description: string, userId: string, dueDate: Date) {
         const note = new Note(title, description, userId, dueDate);
         this.notes.push(note);
-        return note;
+        return { ...note }; 
     }
 
     @LogAction
@@ -37,8 +37,9 @@ class NotesApp {
             throw new Error(`Note with id ${noteId} not found`);
         }
         Object.assign(note, updatedFields);
-        return note;
+        return { ...note }; 
     }
+    
 
     @LogAction
     async deleteNote(noteId: string) {
@@ -60,4 +61,3 @@ class NotesApp {
     }
 }
 
-export { NotesApp };
