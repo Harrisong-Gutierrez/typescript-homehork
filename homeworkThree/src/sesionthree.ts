@@ -1,3 +1,5 @@
+import { Models } from "./utils/models";
+import { Utilities } from "./utils/utilities";
 
 
 
@@ -5,9 +7,6 @@
 // Descripción:
 // Crea una clase genérica DataStore<T> que funcione como un almacén de datos genéricos. Implementa métodos para agregar (addItem), obtener (getItem) y eliminar (removeItem) elementos del almacén.
 // Tareas:
-
-import { Models } from "./utils/models";
-import { Utilities } from "./utils/utilities";
 
 // Define la clase DataStore<T> con un método para agregar elementos de tipo T.
 // Implementa un método para obtener un elemento dado su índice.
@@ -86,15 +85,23 @@ objectStore.removeItem(0);
 // Añade funcionalidades para aplicar descuentos a las órdenes y calcular el total con descuento.
 // Implementa una interfaz para definir la estructura de las órdenes y asegurar la coherencia en los datos.
 
-interface Order {
+interface physicalOrder {
     id: number;
     product: string;
     price: number;
     quantity: number;
 }
 
+interface digitalOrder {
+    id: number;
+    product: string;
+    price: number;
+    quantity: number;
+    key: number;
+}
 
-class OrderManager<T extends Order> {
+
+class OrderManager<T extends physicalOrder | digitalOrder> {
     private orders: T[] = [];
 
     addOrder(order: T): void {
@@ -116,16 +123,17 @@ class OrderManager<T extends Order> {
     }
 }
 
-const physicalOrderManager = new OrderManager<Order>();
-const digitalOrderManager = new OrderManager<Order>();
+const physicalOrderManager = new OrderManager<physicalOrder>();
+const digitalOrderManager = new OrderManager<digitalOrder>();
 
 
 physicalOrderManager.addOrder({ id: 1, product: "Laptop", price: 1000, quantity: 2 });
 physicalOrderManager.addOrder({ id: 2, product: "Smartphone", price: 800, quantity: 3 });
+console.log(physicalOrderManager)
 
-
-digitalOrderManager.addOrder({ id: 1, product: "Ebook", price: 20, quantity: 5 });
-digitalOrderManager.addOrder({ id: 2, product: "Software", price: 50, quantity: 2 });
+digitalOrderManager.addOrder({ id: 1, product: "Ebook", price: 20, quantity: 5, key: 45634 });
+digitalOrderManager.addOrder({ id: 2, product: "Software", price: 50, quantity: 2, key: 1998 });
+console.log(digitalOrderManager)
 
 console.log(physicalOrderManager.calculateTotalSales());
 console.log(digitalOrderManager.calculateTotalSales());
