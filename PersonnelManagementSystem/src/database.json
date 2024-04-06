@@ -1,0 +1,15 @@
+{
+    "employees": [
+      { "name": "Kevin lazo", "age": 35, "role": "Software Engineer", "department": "Engineering" },
+      { "name": "Alice Smith", "age": 28, "role": "Frontend Developer", "department": "Engineering" },
+      { "name": "Bob Johnson", "age": 32, "role": "Backend Developer", "department": "Engineering" },
+      { "name": "Emily Brown", "age": 26, "role": "UI/UX Designer", "department": "Design" },
+      { "name": "Michael Wilson", "age": 30, "role": "Project Manager", "department": "Management" },
+      { "name": "Jessica Lee", "age": 29, "role": "Quality Assurance Engineer", "department": "Quality Assurance" },
+      { "name": "David Martinez", "age": 34, "role": "Full Stack Developer", "department": "Engineering" },
+      { "name": "Jennifer Taylor", "age": 31, "role": "Product Owner", "department": "Product Management" },
+      { "name": "Andrew Jackson", "age": 27, "role": "DevOps Engineer", "department": "Engineering" },
+      { "name": "Sarah Clark", "age": 33, "role": "Technical Lead", "department": "Engineering" }
+    ]
+  }
+  
