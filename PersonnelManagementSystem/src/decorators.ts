@@ -2,7 +2,7 @@ export function validateName(target: any, propertyKey: string, descriptor: Prope
     const originalMethod = descriptor.value;
 
     descriptor.value = function (...args: any[]) {
-        const newName: string = args[1];
+        const newName: string = args[0].name;
         if (newName.length < 5) {
             throw new Error("Name must be at least 5 characters long.");
         } else {

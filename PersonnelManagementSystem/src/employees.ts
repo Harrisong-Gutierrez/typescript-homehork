@@ -1,5 +1,7 @@
 import { promises as fsPromises } from 'fs';
-import { Employee, EmployeeManager } from './types';
+import { Employee, Manager, Intern } from './types';
+import { EmployeeManager } from './employeeManager';
+import { validateName } from './decorators';
 
 export async function loadEmployees(): Promise<void> {
     try {
@@ -18,4 +20,4 @@ export async function loadEmployees(): Promise<void> {
     }
 }
 
-export {  EmployeeManager };
+export { EmployeeManager };

@@ -10,11 +10,3 @@ export interface Manager extends Employee {
 export interface Intern extends Employee {
     project: string;
 }
-
-export class EmployeeManager {
-    employees: Employee[] = [];
-
-    addEmployee(employee: Employee) {
-        this.employees.push(employee);
-    }
-}
