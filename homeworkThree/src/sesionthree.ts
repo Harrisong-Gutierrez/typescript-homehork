@@ -23,7 +23,7 @@ import { Utilities } from "./utils/utilities";
 
 
 interface Item {
-    id: number | string;
+    id: number | string | object;
 }
 
 class DataStore<T> {
@@ -52,6 +52,8 @@ const dataStore = new DataStore<Item>();
 
 dataStore.addItem({ id: 1 });
 dataStore.addItem({ id: "abc" });
+dataStore.addItem({ id: { mame: "harrisong", age: 26 } });
+console.log(dataStore)
 
 const numberStore = new DataStore<number>();
 
