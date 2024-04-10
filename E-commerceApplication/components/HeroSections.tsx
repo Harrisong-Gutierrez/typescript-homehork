@@ -31,6 +31,7 @@ export default function HeroSections() {
         </div>
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div className="text-center">
+          <h1 class="text-6xl font-bold text-gray-600"> Welcome to (SMBS) Solutions!</h1>
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
             We connect the Latin America top engineers with the world's top organizations.
             </h1>
