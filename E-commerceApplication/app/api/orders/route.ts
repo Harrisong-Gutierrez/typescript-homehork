@@ -29,7 +29,6 @@ export const GET = async (request: NextRequest) => {
     }
 };
 
-
 export const POST = async (request: NextRequest): Promise<NextResponse> => {
     try {
         const { id, user_id, cart_id, total, shipping_address, payment_method, order_status, order_date } = await request.json();
@@ -53,7 +52,6 @@ export const POST = async (request: NextRequest): Promise<NextResponse> => {
         );
     }
 }
-
 
 export const PUT = async (request: NextRequest): Promise<NextResponse> => {
     try {
@@ -79,9 +77,27 @@ export const PUT = async (request: NextRequest): Promise<NextResponse> => {
     }
 };
 
-
-
-
-
-
+export const DELETE = async (request: NextRequest): Promise<NextResponse> => {
+    try {
+        const { id } = await request.json();
+        const { error } = await supabase.from("orders").delete().eq('id', id);
+        if (error) {
+            console.error("Error deleting order:", error.message);
+            return NextResponse.json(
+                { message: "Failed to delete order", error: error.message },
+                { status: 500 }
+            );
+        }
+        return NextResponse.json(
+            { message: "order deleted successfully" },
+            { status: 200 }
+        );
+    } catch (error: any) {
+        console.error("Error deleting order:", error.message);
+        return NextResponse.json(
+            { message: "Failed to delete order", error: error.message },
+            { status: 500 }
+        );
+    }
+};
 
