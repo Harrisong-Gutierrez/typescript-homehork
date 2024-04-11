@@ -52,3 +52,28 @@ export const POST = async (request: NextRequest): Promise<NextResponse> => {
         );
     }
 };
+
+
+export const DELETE = async (request: NextRequest): Promise<NextResponse> => {
+    try {
+        const { id } = await request.json();
+        const { error } = await supabase.from("product_recommendations").delete().eq('id', id);
+        if (error) {
+            console.error("Error deleting recommendations:", error.message);
+            return NextResponse.json(
+                { message: "Failed to delete recommendations", error: error.message },
+                { status: 500 }
+            );
+        }
+        return NextResponse.json(
+            { message: "Recommendations deleted successfully" },
+            { status: 200 }
+        );
+    } catch (error: any) {
+        console.error("Error deleting recommendations:", error.message);
+        return NextResponse.json(
+            { message: "Failed to delete recommendations", error: error.message },
+            { status: 500 }
+        );
+    }
+};
