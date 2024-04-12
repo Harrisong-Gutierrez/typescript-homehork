@@ -51,3 +51,28 @@ export const POST = async (request: NextRequest): Promise<NextResponse> => {
         );
     }
 };
+
+
+export const DELETE = async (request: NextRequest): Promise<NextResponse> => {
+    try {
+        const { id } = await request.json();
+        const { error } = await supabase.from("purchase_history").delete().eq('id', id);
+        if (error) {
+            console.error("Error deleting Purchase History:", error.message);
+            return NextResponse.json(
+                { message: "Failed to delete Purchase History", error: error.message },
+                { status: 500 }
+            );
+        }
+        return NextResponse.json(
+            { message: "Purchase History deleted successfully" },
+            { status: 200 }
+        );
+    } catch (error: any) {
+        console.error("Error deleting Purchase History:", error.message);
+        return NextResponse.json(
+            { message: "Failed to delete Purchase History", error: error.message },
+            { status: 500 }
+        );
+    }
+};
