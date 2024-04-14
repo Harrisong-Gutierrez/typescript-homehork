@@ -5,9 +5,13 @@ import { createClient } from "@/utils/supabase/server";
 import Header from "@/components/Header";
 import { redirect } from "next/navigation";
 import Main from "@/components/main";
+import { getProducts } from "../services/productCalls";
 
 export default async function ProtectedPage() {
   const supabase = createClient();
+
+
+
 
   const {
     data: { user },
