@@ -4,6 +4,7 @@ import { createClient } from "@/utils/supabase/server";
 
 import Header from "@/components/Header";
 import { redirect } from "next/navigation";
+import Main from "@/components/main";
 
 export default async function ProtectedPage() {
   const supabase = createClient();
@@ -28,7 +29,7 @@ export default async function ProtectedPage() {
       </div>
 
       <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
-        <Header />
+        <Main />
       </div>
 
       <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">

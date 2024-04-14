@@ -1,0 +1,26 @@
+import { Product } from '@/utils/supabase/types';
+import React from 'react';
+
+
+interface ProductCardProps {
+  product: Product;
+  onAddToCart: (product: Product) => void;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
+  return (
+    <div className="border rounded-lg p-4 mb-4">
+      <h2 className="text-lg font-semibold mb-2">{product.name}</h2>
+      <p className="mb-2">{product.description}</p>
+      <p className="text-gray-700 mb-2">${product.price}</p>
+      <button
+        onClick={() => onAddToCart(product)}
+        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      >
+        Add to Cart
+      </button>
+    </div>
+  );
+};
+
+export default ProductCard;
