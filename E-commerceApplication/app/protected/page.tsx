@@ -10,9 +10,6 @@ import { getProducts } from "../services/productCalls";
 export default async function ProtectedPage() {
   const supabase = createClient();
 
-
-
-
   const {
     data: { user },
   } = await supabase.auth.getUser();

@@ -1,11 +1,10 @@
-"use client"
+"use client";
 
-import { Product } from '@/utils/supabase/types';
-import React, { useState, useEffect } from 'react';
-import ProductList from './ProductList';
-import ShoppingCart from './ShoppingCart';
-import { getProducts } from '@/app/services/productCalls';
-
+import { Product } from "@/utils/supabase/types";
+import React, { useState, useEffect } from "react";
+import ProductList from "./ProductList";
+import ShoppingCart from "./ShoppingCart";
+import { getProducts } from "@/app/services/productCalls";
 
 const Main: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -17,12 +16,12 @@ const Main: React.FC = () => {
         const fetchedProducts = await getProducts();
         setProducts(fetchedProducts);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       }
     };
 
     fetchProducts();
-  }, []); 
+  }, []);
 
   const addToCart = (product: Product) => {
     setCart([...cart, product]);

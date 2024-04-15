@@ -1,6 +1,5 @@
-import { Product } from '@/utils/supabase/types';
-import React from 'react';
-
+import { Product } from "@/utils/supabase/types";
+import React from "react";
 
 interface ProductCardProps {
   product: Product;
@@ -9,7 +8,6 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
   const handleClick = () => {
-
     onAddToCart(product);
   };
 
@@ -27,6 +25,5 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
     </div>
   );
 };
-
 
 export default ProductCard;
