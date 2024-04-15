@@ -16,7 +16,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
   return (
     <div className="border rounded-lg p-4 mb-4">
       <figure>
-        <Image src={product.image} alt="" width={600} height={350} />
+        <Image
+          className="rounded-t-lg"
+          src={product.image}
+          alt=""
+          width={300}
+          height={500}
+        />
       </figure>
       <h2 className="text-lg font-semibold mb-2">{product.name}</h2>
       <p className="mb-2">{product.description}</p>
