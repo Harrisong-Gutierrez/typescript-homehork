@@ -54,6 +54,31 @@ export const POST = async (request: NextRequest): Promise<NextResponse> => {
 };
 
 
+export const PUT = async (request: NextRequest): Promise<NextResponse> => {
+    try {
+        const { id, cart_id, product_id, quantity } = await request.json();
+        const { data: cartDetails, error } = await supabase.from("cart_details").update({ id, cart_id, product_id, quantity }).eq('id', id);
+        if (error) {
+            console.error("Error updating cartDetails:", error.message);
+            return NextResponse.json(
+                { message: "Failed to update cartDetails", error: error.message },
+                { status: 500 }
+            );
+        }
+        return NextResponse.json(
+            { message: "cartDetails updated successfully", cartDetails },
+            { status: 200 }
+        );
+    } catch (error: any) {
+        console.error("Error updating cartDetails:", error.message);
+        return NextResponse.json(
+            { message: "Failed to update cartDetails", error: error.message },
+            { status: 500 }
+        );
+    }
+};
+
+
 
 export const DELETE = async (request: NextRequest): Promise<NextResponse> => {
     try {
