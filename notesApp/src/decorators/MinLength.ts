@@ -1,13 +1,12 @@
+
 export function MinLength(minLength: number) {
     return function (target: any, key: string) {
         let val = target[key];
 
-        // Getter
         const getter = function () {
             return val;
         };
 
-        // Setter
         const setter = function (newVal: string) {
             if (newVal && newVal.length >= minLength) {
                 val = newVal;
@@ -16,7 +15,6 @@ export function MinLength(minLength: number) {
             }
         };
 
-        // Re-definir la propiedad
         Object.defineProperty(target, key, {
             get: getter,
             set: setter,

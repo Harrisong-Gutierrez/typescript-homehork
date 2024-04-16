@@ -4,7 +4,7 @@ import { NotesApp } from './services/ NotesApp';
 
 
 async function createNewNote(notesApp: NotesApp, user: User) {
-    return await notesApp.createNote("friday", "This is a new note", user.email, new Date());
+    return await notesApp.createNote("fryday", "This is a new note", user.email, new Date());
 }
 
 async function updateNoteDescription(notesApp: NotesApp, userId: string, newDescription: string) {
@@ -40,7 +40,6 @@ async function deleteNoteById(notesApp: NotesApp, userId: string) {
         console.log("Deleted note:", deleted);
 
     } catch (error: any) {
-
         console.error("Error:", error.message);
 
     }

@@ -1,12 +1,11 @@
 export function ValidateEmail(target: any, key: string) {
     let val = target[key];
 
-    // Getter
+
     const getter = function () {
         return val;
     };
 
-    // Setter
     const setter = function (newVal: string) {
         const emailRegex = /\S+@\S+\.\S+/;
         if (emailRegex.test(newVal)) {
@@ -16,7 +15,7 @@ export function ValidateEmail(target: any, key: string) {
         }
     };
 
-    // Re-definir la propiedad
+
     Object.defineProperty(target, key, {
         get: getter,
         set: setter,

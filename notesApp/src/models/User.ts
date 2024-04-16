@@ -1,3 +1,4 @@
+import { MinLength } from "../decorators/MinLength";
 import { Required } from "../decorators/Required";
 import { ValidateEmail } from "../decorators/ValidateEmail";
 
@@ -5,6 +6,9 @@ import { ValidateEmail } from "../decorators/ValidateEmail";
 
 
 export class User {
+
+
+    @MinLength(3)
     @Required
     name: string;
 

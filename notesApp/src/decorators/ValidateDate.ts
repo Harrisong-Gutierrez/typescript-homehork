@@ -1,15 +1,15 @@
-export function Required(target: any, key: string) {
+export function ValidateDate(target: any, key: string) {
     let val = target[key];
 
     const getter = function () {
         return val;
     };
 
-    const setter = function (newVal: any) {
-        if (newVal !== undefined && newVal !== null) {
+    const setter = function (newVal: Date) {
+        if (newVal instanceof Date && !isNaN(newVal.getTime())) {
             val = newVal;
         } else {
-            throw new Error(`Property ${key} is required`);
+            throw new Error(`Property ${key} must be a valid Date`);
         }
     };
 
@@ -20,3 +20,5 @@ export function Required(target: any, key: string) {
         configurable: true,
     });
 }
+
+
