@@ -1,7 +1,7 @@
 import { promises as fsPromises } from 'fs';
-import { Employee, Manager, Intern } from './types';
+import { Role } from './types';
 import { EmployeeManager } from './employeeManager';
-import { validateName } from './decorators';
+
 
 export async function loadEmployees(): Promise<void> {
     try {
@@ -10,7 +10,7 @@ export async function loadEmployees(): Promise<void> {
 
         const manager = new EmployeeManager();
 
-        employeesData.forEach((employeeData: Employee) => {
+        employeesData.forEach((employeeData: Role) => {
             manager.addEmployee(employeeData);
         });
 
@@ -21,3 +21,4 @@ export async function loadEmployees(): Promise<void> {
 }
 
 export { EmployeeManager };
+

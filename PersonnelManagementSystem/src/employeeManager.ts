@@ -1,11 +1,11 @@
-import { Employee } from './types';
+import { Employee, Role } from './types';
 import { validateName } from './decorators';
 
 export class EmployeeManager {
-    employees: Employee[] = [];
+    employees: Role[] = [];
 
     @validateName
-    addEmployee(employee: Employee) {
+    addEmployee(employee: Role) {
         this.employees.push(employee);
     }
 }

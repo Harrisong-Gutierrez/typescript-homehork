@@ -10,3 +10,25 @@ export interface Manager extends Employee {
 export interface Intern extends Employee {
     project: string;
 }
+
+export interface Engineering extends Employee {
+    project: string;
+}
+
+export interface QualityAssurance extends Employee {
+    project: string;
+}
+
+export interface Management extends Employee {
+    project: string;
+}
+
+export interface Design extends Employee {
+    project: string;
+}
+
+
+
+
+export type Role = Manager | Intern | Engineering | QualityAssurance | Management | Design;
+
