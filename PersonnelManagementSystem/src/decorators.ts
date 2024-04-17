@@ -12,3 +12,4 @@ export function validateName(target: any, propertyKey: string, descriptor: Prope
 
     return descriptor;
 }
+

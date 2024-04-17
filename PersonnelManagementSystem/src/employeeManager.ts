@@ -1,4 +1,3 @@
-
 import { validateName } from './decorators';
 import { Employee, EmployeeWithSalary } from './types';
 
@@ -11,7 +10,6 @@ export class EmployeeManager {
     }
 
     calculateTotalSalary(): number {
-
         const employeesWithSalary = this.employees.filter(
             (employee): employee is EmployeeWithSalary => 'salary' in employee
         );

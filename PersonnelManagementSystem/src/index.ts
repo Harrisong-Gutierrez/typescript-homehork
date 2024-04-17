@@ -1,4 +1,5 @@
-import { EmployeeManager, loadEmployees } from './fileManager';
+import { EmployeeManager } from './employeeManager';
+import { loadEmployees } from './fileManager';
 import { EmployeeWithSalary } from './types';
 
 const manager = new EmployeeManager();

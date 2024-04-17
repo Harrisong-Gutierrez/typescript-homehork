@@ -1,6 +1,6 @@
 import { promises as fsPromises } from 'fs';
-import { Role } from './types';
 import { EmployeeManager } from './employeeManager';
+import { Role } from './types';
 
 export async function loadEmployees(): Promise<void> {
     try {
@@ -18,5 +18,3 @@ export async function loadEmployees(): Promise<void> {
         console.error('Error al leer el archivo database.json:', error);
     }
 }
-
-export { EmployeeManager };
