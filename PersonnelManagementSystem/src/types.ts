@@ -32,3 +32,6 @@ export interface Design extends Employee {
 
 export type Role = Manager | Intern | Engineering | QualityAssurance | Management | Design;
 
+export interface EmployeeWithSalary extends Employee {
+    salary: number;
+}
