@@ -1,4 +1,4 @@
-export function validateName(target: any, propertyKey: string, descriptor: PropertyDescriptor): PropertyDescriptor {
+export function validateName(_target: any, _propertyKey: string, descriptor: PropertyDescriptor): PropertyDescriptor {
     const originalMethod = descriptor.value;
 
     descriptor.value = function (...args: any[]) {
